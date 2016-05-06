@@ -1,40 +1,3 @@
-//
-
-
-// Create a tree function that should build a pine tree out of a character
-// // in the Chrome dev tools console. It accepts a single object as an argument.
-// // The object should have two key/value pairs.
-
-// // A key that specifies the height of the pine tree.
-// // The value for the height of the tree should be from user input in a
-// //        <input type="text"> field in the DOM.
-// // A key that specifies which character to use to build the pine tree.
-// // The character to use should be from user input in a <input type="text">
-// //       field in the DOM.
-// // Once the user enters in a number, and a character, the user can either then
-// //       just press the enter key (as long as the cursor is in one of the input fields),
-//       or click a button that is labeled "Grow your tree" and the tree should be shown
-//       in the console. This requires you to add an event listener to the button,
-//       as well as an event listener for the enter/return key.
-
-// If either of the input fields does not have a value in it when the user presses
-//       the enter key, or presses the button, then display an alert stating that
-//       both fields must have a value.
-
-// Grow your tree
-
-// Example
-
-// Here's what the pine tree should look like when you specify a height of 7,
-//       and use the asterisk character.
-
-//       *
-//      ***
-//     *****
-//    *******
-//   *********
-// *************
-
 
 //These are vars that grab the three interactables in the HTML.
 var submit =  document.getElementById("submit");
@@ -57,15 +20,15 @@ treeTall.addEventListener("keydown", checkEnter);
 treeKind.addEventListener("keydown", checkEnter);
 
 //So, each key on a keyboard has an assigned " which " number.
-//The "which" of the Enter/Return key is 13. Always.
-//This func says, "Hey, listen for when which is exactly equivalent to 13,
+//The "which" of the Enter/Return key is 13.
+//This func says, "Listen for when which is strictly equivalent to 13,
 //i.e.- when the Enter key is pressed, call the grabRows function."
 function checkEnter(event) {
   if (event.which === 13) {
     grabRows();
   }
-};
-//This func starts by saying that, when we look the two keys in the object (above),
+}
+//This func starts by saying that, when we look at the two keys in the object (above),
 //what we really want are the values inside those keys.
 function grabRows() {
   pineTree.treeTall = treeTall.value;
@@ -82,7 +45,7 @@ function grabRows() {
     numSpaces = pineTree.treeTall - 1;
     showObject(pineTree);
   }
-};
+}
 //This here is the "main" function. It has a for loop that starts by saying that
 //we have an incrementer initially set to zero;
 //as long as that incrementer has a value that is
@@ -90,20 +53,20 @@ function grabRows() {
 //increment (add to) the incrementer by one.
 function showObject(pineTree) {
   for (var i = 0; i < pineTree.treeTall; i++){
-    var dieTreezDie = ""
+    var dieTreezDie = "";
 //Within that main for loop, there are two others. This first "sub-loop" introduces
 //another incrementer, d, that increments (counts up) by one every time the loop runs,
 //for as long as the incrementer has a value less than the number of spaces in the
 //string, where each string is a line on the console display.
     for (var d = 0; d < numSpaces; d++){
-      dieTreezDie = dieTreezDie + " "
-    };
+      dieTreezDie = dieTreezDie + " ";
+    }
 //This second for "sub-loop" introduces a third incrementer, f, that decrements
 //(counts down) the number of characters in each line ("string") by two every time
 //through the loop.
     for (var f = 0; f < numChar; f++){
       dieTreezDie = dieTreezDie + pineTree.treeKind;
-    };
+    }
 //The net effect of those three loops is that, when the function runs,
 //the big loop generates one row for each row in the tree the user wants.
 //And in each subsequent row generated, the number of characters will grow by two
@@ -121,4 +84,4 @@ function showObject(pineTree) {
 //before the log.  Of course, if you list them before the big loop, it won't run at all.
 
   }
-};
+}
